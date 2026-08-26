@@ -82,7 +82,7 @@ describe('downloadAsIterable', () => {
     await client.with(async () => {
       const iter = downloadAsIterable(client, stubLocation, { fileSize })
       await iter.next()
-      await iter.return()
+      await iter.return?.()
 
       const atAbandon = requests
       await sleep(3000)
