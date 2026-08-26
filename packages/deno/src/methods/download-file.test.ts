@@ -17,7 +17,7 @@ vi.mock('@mtcute/core/methods.js', () => ({
 
 const { downloadToFile } = await import('./download-file.js')
 
-describe('downloadToFile (deno)', () => {
+describe.runIf(process.env.TEST_ENV === 'deno')('downloadToFile (deno)', () => {
   const client = { log: { debug: vi.fn() } } as any
   const tmp = () => join(tmpdir(), `mtcute-deno-${Math.random().toString(36).slice(2)}`)
 
