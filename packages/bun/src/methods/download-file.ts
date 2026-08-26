@@ -43,7 +43,7 @@ export async function downloadToFile(
 
   try {
     for await (const chunk of downloadAsIterable(client, location, params)) {
-      await output.write(chunk)
+      await Promise.resolve(output.write(chunk))
     }
   } finally {
     await end()
